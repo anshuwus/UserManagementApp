@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Sign-Up</title>
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- MDB -->
+<link rel="stylesheet" href="css/bootstrap-login-form.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	
+</script>
+
+
+<style>
+.gradient-custom-2 {
+	/* fallback for old browsers */
+	background: #fccb90;
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media ( min-width : 768px) {
+	.gradient-form {
+		height: 100vh !important;
+	}
+}
+
+@media ( min-width : 769px) {
+	.gradient-custom-2 {
+		border-top-right-radius: .3rem;
+		border-bottom-right-radius: .3rem;
+	}
+}
+</style>
+</head>
+
+<body>
+
+
+	<section class="vh-100" style="background-color: #eee;">
+		<div class="container h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-lg-12 col-xl-11">
+					<div class="card text-black" style="border-radius: 25px;">
+						<div class="card-body p-md-10">
+							<div class="row justify-content-center">
+								<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registration
+										Form</p>
+
+
+									<form class="mx-1 mx-md-4" th:action="@{/signUp}" method="POST"
+										th:object="${user}" id="userForm">
+										
+										<p th:text="${msg}" class="text-success"></p>
+
+										<div class="d-flex flex-row align-items-center mt-3">
+											<i class="fas fa-user fa-lg me-3 fa-fw" aria-hidden="true"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="text" id="fName" class="form-control"
+													th:field="*{firstName}" /> <label class="form-label"
+													for="fName">First Name</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="fNameError"></span>
+										</div>
+
+										<div class="d-flex flex-row align-items-center">
+											<i class="fa fa-arrow-right fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="text" id="lName" class="form-control"
+													th:field="*{lastName}" /> <label class="form-label"
+													for="lName">Last Name</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="lNameError"></span>
+										</div>
+
+
+										<div class="d-flex flex-row align-items-center">
+											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="email" id="email" class="form-control"
+													th:field="*{email}" /> <label class="form-label"
+													for="email">Your Email</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="emailError"></span>
+										</div>
+
+										<div class="d-flex flex-row align-items-center">
+											<i class="fa fa-phone fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="number" id="phno" class="form-control"
+													th:field="*{phno}" /> <label class="form-label" for="phno">Phone
+													No. </label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="phnoError"></span>
+										</div>
+
+
+
+										<div class="d-flex flex-row align-items-center mb-4">
+											<i class="fa fa-calendar fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="date" id="dob" class="form-control"
+													th:field="*{dob}" /> <label class="form-label" for="dob">DOB</label>
+											</div>
+										</div>
+
+
+										<div class="d-flex flex-row align-items-center mb-4">
+
+											<h6 class="mb-2 pb-1">Gender: &nbsp;&nbsp;&nbsp;&nbsp;</h6>
+
+											<div class="form-check form-check-inline">
+												<i class="fa fa-female fa-lg me-3 fa-fw"></i> <input
+													class="form-check-input" type="radio" name="gender"
+													id="femaleGender" value="Fe-male" th:field="*{gender}"
+													checked /> <label class="form-check-label"
+													for="femaleGender">Female</label>
+											</div>
+
+											<div class="form-check form-check-inline">
+												<i class="fa fa-male fa-lg me-3 fa-fw"></i> <input
+													class="form-check-input" type="radio" name="gender"
+													id="maleGender" value="Male" th:field="*{gender}" /> <label
+													class="form-check-label" for="maleGender">Male</label>
+											</div>
+
+										</div>
+
+
+
+										<div class="d-flex flex-row align-items-center mb-4">
+											<i class="fa fa-globe fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<select class="select form-control-lg" th:field="*{country}"
+													id="country">
+													<option value="">Choose country</option>
+													<option th:each="data : ${counMap}" th:value="${data.key}"
+														th:text="${data.value}" />
+
+												</select> <label class="form-label">Country</label>
+											</div>
+										</div>
+										<span id="stateDrop"></span>
+										<div class="d-flex flex-row align-items-center mb-4" id="div">
+											<i class="fa fa-location-arrow fa-lg me-3 fa-fw" id="stIcon"></i>
+											<div class="form-outline flex-fill mb-0">
+												<select class="select form-control-lg" id="state"
+													th:field="*{state}">
+													<option value="">Choose state</option>
+												</select> <label class="form-label" id="stLabel">State</label>
+											</div>
+										</div>
+										<span id="cityDrop"></span>
+
+										<div class="d-flex flex-row align-items-center mb-4">
+											<i class="fa fa-map-marker fa-lg me-3 fa-fw" id="cIcon"></i>
+
+											<div class="form-outline flex-fill mb-0">
+												<select class="form-control-lg" id="city">
+													<option value="">Choose city</option>
+												</select> <label class="form-label select-label" id="cLabel">City</label>
+											</div>
+										</div>
+
+
+
+										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+
+											<button type="reset" class="btn btn-outline-primary">Reset</button>
+											&nbsp;&nbsp;&nbsp;
+											<button type="submit" class="btn btn-primary btn-lg">Register</button>
+
+										</div>
+										<div
+											class="d-flex align-items-center justify-content-center pb-4">
+											<p class="mb-0 me-2">Already have an account?</p>
+											<a href="./" type="button" class="btn btn-outline-primary">Sign-In</a>
+										</div>
+									</form>
+
+								</div>
+								<div
+									class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+									<img
+										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+										class="img-fluid" alt="Sample image">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script th:src="@{/myjs/signUpVlidate.js}"></script>
+	<!-- MDB -->
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+	<!-- Custom scripts -->
+	<script type="text/javascript"></script>
+</body>
+
+</html>

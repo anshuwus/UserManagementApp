@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Unlock Acount</title>
+<!-- MDB icon -->
+<link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+<!-- MDB -->
+<link rel="stylesheet" href="css/bootstrap-login-form.min.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<style>
+.gradient-custom-2 {
+	/* fallback for old browsers */
+	background: #fccb90;
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media ( min-width : 768px) {
+	.gradient-form {
+		height: 100vh !important;
+	}
+}
+
+@media ( min-width : 769px) {
+	.gradient-custom-2 {
+		border-top-right-radius: .3rem;
+		border-bottom-right-radius: .3rem;
+	}
+}
+</style>
+</head>
+
+<body>
+
+
+	<section class="vh-100" style="background-color: #eee;">
+		<div class="container h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-lg-12 col-xl-11">
+					<div class="card text-black" style="border-radius: 25px;">
+						<div class="card-body p-md-10">
+							<div class="row justify-content-center">
+								<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Unlock
+										Account</p>
+
+									<form class="mx-1 mx-md-4" th:action="@{/unlock}" method="POST"
+										th:object="${unlockForm}" id="unlock">
+
+										<p th:text="${msg}" class="text-success"></p>
+
+
+										<div style="display: flex; justify-content: flex-start;">
+											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i> <b
+												style="background-color: papayawhip;">Your Email :&nbsp;</b>
+											<b style="background-color: palegoldenrod;"
+												th:text="${email}"></b>
+										</div>
+
+
+										<div class="d-flex flex-row align-items-center mt-4">
+											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="password" id="tpwd" class="form-control"
+													th:field="*{tempPwd}" /> <label class="form-label"
+													for="tpwd">Temporary Password</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="tpwdError"></span>
+										</div>
+
+										<div class="d-flex flex-row align-items-center">
+											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="password" id="npwd" class="form-control"
+													th:field="*{newPwd}" /> <label class="form-label"
+													for="npwd">New Password</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="npwdError"></span>
+										</div>
+
+										<div class="d-flex flex-row align-items-center">
+											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+											<div class="form-outline flex-fill mb-0">
+												<input type="password" id="cpwd" class="form-control"
+													th:field="*{pwd}" /> <label class="form-label" for="cpwd">Confirm
+													Password</label>
+											</div>
+										</div>
+										<div class="d-flex flex-row align-items-center mb-4">
+											<span id="cpwdError"></span>
+										</div>
+
+									
+												<input type="hidden" id="email" class="form-control"
+													th:field="*{email}" th:value="${email}" />
+											
+										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+											<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+										</div>
+
+									</form>
+
+								</div>
+								<div
+									class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+									<img
+										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+										class="img-fluid" alt="Sample image">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script th:src="@{/myjs/unlockValidate.js}"></script>
+
+
+	<!-- MDB -->
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+	<!-- Custom scripts -->
+	<script type="text/javascript"></script>
+</body>
+
+</html>
